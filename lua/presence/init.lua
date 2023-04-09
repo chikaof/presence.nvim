@@ -59,6 +59,7 @@ Presence.peers = {}
 Presence.socket = vim.v.servername
 Presence.workspace = nil
 Presence.workspaces = {}
+Presence.is_idle = false
 
 local log = require("lib.log")
 local msgpack = require("deps.msgpack")
@@ -832,7 +833,7 @@ function Presence:update_for_buffer(buffer, should_debounce)
     local assets = {
         large_image = use_file_as_main_image and asset_key or "nvim",
         large_text = use_file_as_main_image and file_text or neovim_image_text,
-        small_image = use_file_as_main_image and "nvim" or asset_key,
+        small_image = Presence.is_idle and "idle" or "nvim",
         small_text = use_file_as_main_image and neovim_image_text or file_text,
     }
 
@@ -947,7 +948,7 @@ function Presence:update_for_buffer(buffer, should_debounce)
 
         self.log:debug("Starting idle timer...")
         self:start_idle_timer(function()
-            print("this is the idletimer :)")
+            Presence.is_idle = true
         end)
     end)
 end
@@ -962,6 +963,7 @@ end
 function Presence:cancel_idle_timer()
     vim.fn.timer_stop(self.idle_timer)
     self.idle_timer = nil
+    Presence.is_idle = false
 end
 
 -- Update Rich Presence for the current or provided vim buffer for an authorized connection
@@ -1294,7 +1296,7 @@ function Presence:handle_cursor_moved()
     if not self.idle_timer then
         print("Setting timer for %d seconds", self.options.idle_timeout * 1000)
         self.idle_timer = vim.fn.timer_start(self.options.idle_timeout * 1000, function()
-            print("this is the idletimer :)")
+            Presence.is_idle = true
         end)
         print(string.format("idle_timer: %s", self.idle_timer))
         print(string.format("idle_timer info: %s", vim.inspect(vim.fn.timer_info(self.idle_timer))))
