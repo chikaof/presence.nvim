@@ -133,6 +133,7 @@ function Presence:setup(...)
     self:set_option("workspace_text", "Working on %s")
     self:set_option("line_number_text", "Line %s out of %s")
     self:set_option("idling_text", "Idling...")
+    self:set_option("repository_text", "Visit repository")
     self:set_option("blacklist", {})
     self:set_option("buttons", true)
     self:set_option("show_time", true)
@@ -763,7 +764,7 @@ function Presence:get_buttons(buffer, parent_dirpath)
         self.log:debug(string.format("Adding button with repository URL: %s", repo_url))
 
         return {
-            { label = "View Repository", url = repo_url },
+            { label = self.options.repository_text, url = repo_url },
         }
     end
 
