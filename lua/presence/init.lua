@@ -117,7 +117,7 @@ function Presence:setup(...)
 
     -- General options
     self:set_option("auto_update", 1)
-    self:set_option("client_id", "1094423985653031003")
+    self:set_option("client_id", "1112514201513099405")
     self:set_option("debounce_timeout", 10)
     self:set_option("idle_timeout", 300)
     self:set_option("idle_treatment", "update")
