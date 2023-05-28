@@ -1,5 +1,5 @@
 local function ft(name, asset)
-    return { name = name, asset = asset }
+    return { name, asset }
 end
 
 --[[
