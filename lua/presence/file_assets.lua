@@ -1,5 +1,5 @@
 local function ft(name, asset)
-    return {name = name, asset = asset}
+    return { name, asset }
 end
 
 --[[
@@ -108,8 +108,8 @@ return {
     ["profile"] = { "profile", "shell" },
     ["renovate.json"] = { "Renovate config", "renovate" },
     ["requirements.txt"] = { "requirements.txt", "python" },
-    ["tailwind.config.js"] = { "Tailwind", "tailwind" },,
-    ["tailwind.config.cjs"] = { "Tailwind", "tailwind" },,
+    ["tailwind.config.js"] = { "Tailwind", "tailwind" },
+    ["tailwind.config.cjs"] = { "Tailwind", "tailwind" },
     ["tailwind.config.ts"] = { "Tailwind", "tailwind" },
     ["terraform.rc"] = { "Terraform config", "terraform" },
     ["v.mod"] = { "v.mod", "vlang" },
