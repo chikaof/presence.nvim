@@ -832,7 +832,7 @@ function Presence:update_for_buffer(buffer, should_debounce)
     local neovim_image_text = self.options.neovim_image_text
     local use_file_as_main_image = self.options.main_image == "file"
     local assets = {
-        large_image = use_file_as_main_image and asset_key or "nvim",
+        large_image = use_file_as_main_image and extension or "nvim",
         large_text = use_file_as_main_image and file_text or neovim_image_text,
         small_image = Presence.is_idle and "idle" or "nvim",
         small_text = use_file_as_main_image and neovim_image_text or file_text,
