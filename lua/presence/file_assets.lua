@@ -141,6 +141,7 @@ return {
     cs = { "C#", "c_sharp" },
     css = { "CSS", "css" },
     cxx = { "C++", "c_plus_plus" },
+    cmake = { "CMake", "cmake" },
     d = { "D", "d" },
     dart = { "Dart", "dart" },
     dll =  { "DLL file", "visual_basic" },
