@@ -119,7 +119,7 @@ function Presence:setup(...)
 	self:set_option("auto_update", 1)
 	self:set_option("client_id", "1094423985653031003")
 	self:set_option("debounce_timeout", 10)
-	self:set_option("idle_timeout", 300)
+	self:set_option("idle_timeout", 120000) -- in milliseconds
 	self:set_option("idle_treatment", "update")
 	self:set_option("main_image", "file") -- "file" or "neovim"
 	self:set_option("neovim_image_text", "Neovim")
@@ -965,8 +965,8 @@ function Presence:update_for_buffer(buffer)
 end
 
 function Presence:start_idle_timer(callback)
-	-- Get idle timeout in milliseconds
-	local idle_timeout = self.options.idle_timeout * 1000
+	-- IdlIdle timeout (MS) default: 2 minutes
+	local idle_timeout = self.options.idle_timeout
 
 	self.idle_timer = vim.fn.timer_start(idle_timeout, callback)
 end
